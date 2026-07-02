@@ -1,0 +1,30 @@
+from asyncio.windows_events import NULL
+
+from django.db import models
+
+
+# Create your models here.
+class Employee(models.Model):
+    first_name = models.CharField()
+    last_name = models.CharField()
+    employee_id_number = models.IntegerField()
+    workplace = models.CharField()
+    shift = models.IntegerField()
+
+
+class Flight(models.Model):
+    aircraft_registration = models.CharField()
+    aircraft_type = models.CharField()
+    estimated_time_arrival = models.DateTimeField()
+    estimated_time_departure = models.DateTimeField()
+    actual_time_arrival = models.DateTimeField()
+    actual_time_departure = models.DateTimeField()
+
+
+class Service(models.Model):
+    service_name = models.CharField()
+    flight = models.ForeignKey(Flight, on_delete=models.CASCADE)
+    assigned_employee = models.ForeignKey(Employee, on_delete=models.CASCADE, default=NULL)
+    ordered_timestamp = models.DateTimeField()
+    in_progress_timestamp = models.DateTimeField()
+    completed_timestamp = models.DateTimeField()
