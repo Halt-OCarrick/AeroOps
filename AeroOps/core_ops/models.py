@@ -1,5 +1,3 @@
-from asyncio.windows_events import NULL
-
 from django.db import models
 
 
@@ -30,7 +28,7 @@ class Flight(models.Model):
 class Service(models.Model):
     service_name = models.CharField()
     flight = models.ForeignKey(Flight, on_delete=models.CASCADE)
-    assigned_employee = models.ForeignKey(Employee, on_delete=models.CASCADE, default=NULL)
+    assigned_employee = models.ForeignKey(Employee, on_delete=models.CASCADE, default=None)
     ordered_timestamp = models.DateTimeField()
     in_progress_timestamp = models.DateTimeField()
     completed_timestamp = models.DateTimeField()
