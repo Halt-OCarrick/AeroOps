@@ -33,7 +33,7 @@ class FlightViewSet(viewsets.ModelViewSet):
     def get_serializer_class(self):
         if self.action == 'retrieve':
             return FlightDetailSerializer
-        return FlightListSerializer  # Used for 'list' and 'create'
+        return FlightListSerializer
 
 
 class ServiceViewSet(viewsets.ModelViewSet):

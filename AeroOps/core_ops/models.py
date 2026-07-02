@@ -20,10 +20,10 @@ class Employee(models.Model):
 class Flight(models.Model):
     aircraft = models.ForeignKey(Aircraft, on_delete=models.CASCADE)
     flight_created_timestamp = models.DateTimeField(auto_now_add=True)
-    estimated_time_arrival = models.DateTimeField(default=None)
-    estimated_time_departure = models.DateTimeField(default=None)
-    actual_time_arrival = models.DateTimeField(default=None)
-    actual_time_departure = models.DateTimeField(default=None)
+    estimated_time_arrival = models.DateTimeField(default=None, null=True)
+    estimated_time_departure = models.DateTimeField(default=None, null=True)
+    actual_time_arrival = models.DateTimeField(default=None, null=True)
+    actual_time_departure = models.DateTimeField(default=None, null=True)
 
 
 class Service(models.Model):
@@ -31,5 +31,5 @@ class Service(models.Model):
     flight = models.ForeignKey(Flight, on_delete=models.CASCADE)
     assigned_employee = models.ForeignKey(Employee, on_delete=models.CASCADE, default=None)
     ordered_timestamp = models.DateTimeField(auto_now_add=True)
-    in_progress_timestamp = models.DateTimeField(default=None)
-    completed_timestamp = models.DateTimeField(default=None)
+    in_progress_timestamp = models.DateTimeField(default=None, null=True)
+    completed_timestamp = models.DateTimeField(default=None, null=True)
