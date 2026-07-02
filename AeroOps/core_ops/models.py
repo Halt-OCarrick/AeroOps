@@ -4,17 +4,23 @@ from django.db import models
 
 
 # Create your models here.
+class Aircraft(models.Model):
+    registration = models.CharField()
+    type = models.CharField()
+    size = models.CharField()
+
+
 class Employee(models.Model):
     first_name = models.CharField()
     last_name = models.CharField()
     employee_id_number = models.IntegerField()
+    role = models.CharField()
     workplace = models.CharField()
     shift = models.IntegerField()
 
 
 class Flight(models.Model):
-    aircraft_registration = models.CharField()
-    aircraft_type = models.CharField()
+    aircraft = models.ForeignKey(Aircraft, on_delete=models.CASCADE)
     estimated_time_arrival = models.DateTimeField()
     estimated_time_departure = models.DateTimeField()
     actual_time_arrival = models.DateTimeField()
