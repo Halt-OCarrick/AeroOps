@@ -26,7 +26,7 @@ class EmployeeViewSet(viewsets.ModelViewSet):
 
 class FlightViewSet(viewsets.ModelViewSet):
     """
-    API enpoint that handles the creation of a flight.
+    API endpoint that handles the creation of a flight.
     """
     queryset = Flight.objects.all().select_related('aircraft')
 
